@@ -13,7 +13,7 @@ module LuhnValidator
 
     sum = calculator(payload)
 
-    (((10 - (sum % 10)) % 10) - checksum).zero?
+    sum.equal?(checksum)
   end
 
   def calculator(payload)
@@ -23,6 +23,6 @@ module LuhnValidator
       num -= 9 if num > 9
       sum += num
     end
-    sum
+    (10 - (sum % 10)) % 10
   end
 end
